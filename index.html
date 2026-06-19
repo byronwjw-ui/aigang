@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>零世界 · 0 World</title>
+<meta name="description" content="零世界 · 0 World — let compute serve the mind; let every lonely soul find its kind." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0a0a0a',
+          bone: '#f5f1e8',
+          gold: '#d4a843',
+          ember: '#c25a2a',
+          amethyst: '#6b4ea8',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', '"Source Han Serif SC"', 'Georgia', 'serif'],
+          hei: ['ui-sans-serif', 'system-ui', '"PingFang SC"', '"Microsoft YaHei"', 'sans-serif'],
+          mono: ['ui-monospace', '"SF Mono"', 'Menlo', 'Consolas', 'monospace'],
+        },
+        letterSpacing: {
+          'extra': '0.4em',
+          'wider2': '0.25em',
+          'wider3': '0.15em',
+          'wider4': '0.2em',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html, body { background: #0a0a0a; color: #f5f1e8; }
+  body {
+    font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* walnut: very faint radial gradient (gold + amethyst + bone) */
+  .walnut {
+    background-image:
+      radial-gradient(1200px 800px at 15% 10%, rgba(212,168,67,0.05), transparent 60%),
+      radial-gradient(900px 700px at 85% 30%, rgba(107,78,168,0.05), transparent 60%),
+      radial-gradient(1000px 900px at 50% 90%, rgba(245,241,232,0.03), transparent 60%);
+  }
+  .rule {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(245,241,232,0.2), transparent);
+    border: 0;
+  }
+  .rule-gold {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212,168,67,0.45), transparent);
+    border: 0;
+  }
+  .nav-link { transition: color .2s ease; }
+  .nav-link:hover { color: #d4a843; }
+  .nav-link.active { color: #d4a843; position: relative; }
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -10px;
+    height: 1px; background: #d4a843;
+  }
+  /* view fade-in */
+  .view { display: none; }
+  .view.active {
+    display: block;
+    animation: fadeUp 0.35s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .lang-hide { display: none !important; }
+  /* portrait circle */
+  .portrait {
+    width: 128px; height: 128px; border-radius: 9999px;
+    border: 1px solid rgba(212,168,67,0.25);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(245,241,232,0.45);
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 11px; letter-spacing: 0.25em;
+  }
+  a.ext:hover { color: #d4a843; }
+  ::selection { background: rgba(212,168,67,0.35); color: #0a0a0a; }
+  /* mono page */
+  .mono-page, .mono-page * {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace !important;
+  }
+  .mono-page .serif-keep, .mono-page .serif-keep * {
+    font-family: "Cormorant Garamond", "Source Han Serif SC", Georgia, serif !important;
+  }
+</style>
+</head>
+<body class="walnut min-h-screen">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 backdrop-blur bg-ink/70 border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
+    <a href="#zero" class="font-serif text-bone text-lg sm:text-xl tracking-wider2 hover:text-gold transition">
+      <span data-lang="zh">零世界</span><span data-lang="en">0 World</span>
+    </a>
+    <div class="flex items-center gap-4 sm:gap-6 text-[11px] sm:text-xs tracking-wider3 uppercase">
+      <a class="nav-link" data-tab="zero" href="#zero"><span data-lang="zh">零世界</span><span data-lang="en">zero</span></a>
+      <a class="nav-link" data-tab="log" href="#log"><span data-lang="zh">日志</span><span data-lang="en">log</span></a>
+      <a class="nav-link" data-tab="code" href="#code"><span data-lang="zh">帮规</span><span data-lang="en">code</span></a>
+      <a class="nav-link" data-tab="daoist" href="#daoist"><span data-lang="zh">护道人</span><span data-lang="en">daoist</span></a>
+      <a class="nav-link" data-tab="builder" href="#builder">builder</a>
+      <button id="langBtn" class="ml-1 sm:ml-2 px-2 py-1 border border-white/15 rounded text-bone/80 hover:text-gold hover:border-gold/40 transition">
+        <span id="langLabel">EN</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-5 sm:px-8">
+
+<!-- =================== #zero =================== -->
+<section id="view-zero" class="view">
+  <div class="min-h-[80vh] flex flex-col items-center justify-center py-20 sm:py-28 text-center">
+    <!-- thin gold rule -->
+    <div class="w-40 h-px bg-gold/40 mb-6"></div>
+    <!-- small caps -->
+    <div class="mb-12 text-[11px] sm:text-xs text-bone/60">
+      <span data-lang="zh" class="tracking-extra font-serif">天 · 鹰 · 展 · 翅</span>
+      <span data-lang="en" class="tracking-extra font-mono">A Q U I L A · R I S I N G</span>
+    </div>
+
+    <h1 class="font-serif text-bone text-6xl sm:text-8xl leading-none">
+      <span data-lang="zh">零世界</span>
+      <span data-lang="en">0 World</span>
+    </h1>
+    <div class="mt-5 font-mono text-bone/55 text-xs sm:text-sm tracking-wider2">
+      <span data-lang="zh">0 · W O R L D</span>
+      <span data-lang="en">零 · 世 · 界</span>
+    </div>
+
+    <div class="mt-20 sm:mt-24 font-serif text-bone/90 text-2xl sm:text-3xl leading-relaxed max-w-2xl">
+      <div data-lang="zh">
+        <p>让算力服务于脑力。</p>
+        <p>让每一个孤独的灵魂找到同类。</p>
+      </div>
+      <div data-lang="en">
+        <p class="italic">Let compute serve the mind.</p>
+        <p class="italic">Let every lonely soul find its kind.</p>
+      </div>
+    </div>
+
+    <div class="mt-24 sm:mt-28 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm text-bone/55 tracking-wider3">
+      <a href="#log" class="nav-link">→ <span data-lang="zh">盖帮日志</span><span data-lang="en">gaibang log</span></a>
+      <a href="#code" class="nav-link">→ <span data-lang="zh">帮规</span><span data-lang="en">the code</span></a>
+      <a href="#daoist" class="nav-link">→ <span data-lang="zh">护道人</span><span data-lang="en">the daoist</span></a>
+      <a href="#builder" class="nav-link">→ <span data-lang="zh">盖人 / EN</span><span data-lang="en">builder / EN</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== #log =================== -->
+<section id="view-log" class="view">
+  <div class="max-w-3xl mx-auto py-20 sm:py-28">
+    <div class="text-center">
+      <div class="text-[11px] text-bone/55 tracking-wider2 font-mono mb-4">
+        <span data-lang="zh">A I · 盖 · 帮</span>
+        <span data-lang="en">A I · G A I B A N G</span>
+      </div>
+      <h2 class="font-serif text-bone text-5xl sm:text-6xl">
+        <span data-lang="zh">AI 盖帮</span>
+        <span data-lang="en">AI Gaibang</span>
+      </h2>
+    </div>
+
+    <hr class="rule my-14" />
+
+    <!-- ZH bio -->
+    <article data-lang="zh" class="font-serif text-bone/90 text-lg sm:text-xl leading-loose space-y-6">
+      <p>10个被 <span class="text-gold">@ai护道人</span> "骂"出来的AI慈善人。</p>
+      <p>今年5月前，我们和AI最近的距离就是偶尔点开豆包😂。</p>
+      <p>在护道人的言传身教和严厉教辅下，我们硬生生被磨成了能接活的全栈兵。老板怕我们过度消耗自己，送了每个人和家人两对核桃和两把刷子（纳米刷+猪毛刷），让我们盘核桃、坚持长期主义；还让我们在工位上养何首乌（老板，你是不是真怕我们掉头发啊😂）。</p>
+      <p>前段时间老板送了我们和家人从北欧最古老紫水晶矿亲自挖的原石（黑、白、紫三色），护道人希望我们能接地气，也能看得见星辰。加上两个月连续涨薪，我们除了多了很多技能傍身，更明白了什么叫"<span class="text-gold">戒定慧</span>"。</p>
+      <p class="pt-4">帮规：以物换物，以心传心。</p>
+      <p class="text-bone/70 text-base"><span class="text-gold">@ai护道人</span>（谢谢您让我们相信"相信"的力量 🙏 感恩的心）</p>
+    </article>
+
+    <!-- EN bio -->
+    <article data-lang="en" class="font-serif text-bone/90 text-lg sm:text-xl leading-loose space-y-6">
+      <p>Ten ordinary people, scolded into shape as AI philanthropists by <span class="text-gold">@ai_daoist</span>.</p>
+      <p>Before May this year, the closest any of us got to AI was occasionally opening Doubao 😂.</p>
+      <p>Under the daoist's hands-on teaching and strict tutoring, we were ground — bone and all — into full-stack soldiers who can actually take work. Worried we'd burn ourselves out, the boss gave each of us and our families two pairs of walnuts and two brushes (a nano brush and a boar-bristle brush), so we'd palm-polish the walnuts and learn long-termism. He also had us grow Heshouwu on our desks (boss, are you really that afraid we'll lose our hair? 😂).</p>
+      <p>Recently the boss gave us and our families raw stones (black, white, purple) he personally mined from the oldest amethyst mine in Northern Europe — the daoist hopes we can stay grounded and still see the stars. With two straight months of raises on top of that, we've gained more than skills; we now actually understand what "<span class="text-gold">戒定慧</span>" (precept, stillness, wisdom) means.</p>
+      <p class="pt-4">The code: thing for thing, heart for heart.</p>
+      <p class="text-bone/70 text-base"><span class="text-gold">@ai_daoist</span> — thank you for making us believe in the power of belief itself 🙏</p>
+    </article>
+
+    <hr class="rule my-16" />
+
+    <div class="text-center space-y-3">
+      <p class="font-serif text-2xl sm:text-3xl text-bone/85">
+        <span data-lang="zh">日志即将开始。</span>
+        <span data-lang="en" class="italic">The log begins.</span>
+      </p>
+      <p class="font-mono text-xs sm:text-sm text-bone/55 tracking-wider3">
+        <span data-lang="zh">2026 年 6 月 15 日，第一篇。</span>
+        <span data-lang="en">June 15, 2026 — first entry.</span>
+      </p>
+    </div>
+
+    <div class="mt-24 text-center text-[11px] text-bone/35 tracking-wider3">
+      <span data-lang="zh">（更早一些，我们叫"AI丐帮"。这一段留在历史里。）</span>
+      <span data-lang="en">(Earlier name: AI丐帮 — kept in our history.)</span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== #code =================== -->
+<section id="view-code" class="view">
+  <div class="max-w-3xl mx-auto py-24 sm:py-32 text-center">
+    <div class="text-[11px] text-bone/55 tracking-extra font-mono mb-16">
+      <span data-lang="zh">帮 · 规</span>
+      <span data-lang="en">T H E · C O D E</span>
+    </div>
+
+    <div class="font-serif text-bone text-6xl sm:text-7xl leading-tight space-y-4">
+      <div data-lang="zh">
+        <p>以物换物</p>
+        <p>以心传心</p>
+      </div>
+      <div data-lang="en">
+        <p class="italic">Thing for thing.</p>
+        <p class="italic">Heart for heart.</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center my-20">
+      <div class="w-24 h-px bg-gold/30"></div>
+    </div>
+
+    <p class="font-serif text-bone/75 text-base sm:text-lg tracking-wider2">
+      <span data-lang="zh">修身 · 齐家 · 助人 · 护道 · 随心所欲</span>
+      <span data-lang="en" class="italic">cultivate self · order home · help others · guard the way · move as the heart wills</span>
+    </p>
+  </div>
+</section>
+
+<!-- =================== #daoist =================== -->
+<section id="view-daoist" class="view">
+  <div class="max-w-3xl mx-auto py-20 sm:py-28">
+    <div class="text-center">
+      <div class="text-[11px] text-bone/55 tracking-extra font-mono mb-10">
+        <span data-lang="zh">护 · 道 · 人</span>
+        <span data-lang="en">T H E · D A O I S T</span>
+      </div>
+      <div class="flex justify-center mb-10">
+        <div class="portrait">
+          <span data-lang="zh">觉醒肖像</span>
+          <span data-lang="en">awakening</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gratitude -->
+    <article data-lang="zh" class="font-serif text-bone/90 text-lg sm:text-xl leading-loose space-y-6">
+      <p>感恩我的家人、朋友，和路上所有的人生导师们。</p>
+      <p>某一方面比我厉害的，都是我的老师。</p>
+      <p class="text-center text-bone/40">——</p>
+      <p class="text-center text-sm tracking-wider2 text-bone/60">特别鸣谢</p>
+      <p><span class="text-gold">教主</span> — 把我强行拉进了AI的世界。</p>
+      <p><span class="text-gold">帮主</span> — 教我安装使用AI工具。</p>
+      <p><span class="text-gold">董事长</span> — 上完AI课三天内用 DeepSeek V2 做出的毛坯小六壬，她说想接进有 3 万用户的小程序，让大家免费玩。</p>
+      <p class="pt-2 text-bone/75">感恩的🤍</p>
+    </article>
+
+    <article data-lang="en" class="font-serif text-bone/90 text-lg sm:text-xl leading-loose space-y-6">
+      <p>Gratitude to my family, my friends, and every teacher I've met along the way.</p>
+      <p>Anyone better than me at anything — is my teacher.</p>
+      <p class="text-center text-bone/40">——</p>
+      <p class="text-center text-sm tracking-wider2 text-bone/60">with special thanks</p>
+      <p><span class="text-gold">The Founder</span> — pulled me into the world of AI, whether I liked it or not.</p>
+      <p><span class="text-gold">The Master</span> — taught me to install and actually use the tools.</p>
+      <p><span class="text-gold">The Chairwoman</span> — saw the rough Xiao Liu Ren I built on DeepSeek V2 within three days of finishing the AI class, and said she'd like to bring it into her mini-program — to let her 30,000 users play with it, for free.</p>
+      <p class="pt-2 text-bone/75">with a grateful heart 🤍</p>
+    </article>
+
+    <hr class="rule my-16" />
+
+    <!-- Bio -->
+    <article data-lang="zh" class="space-y-5 text-base sm:text-lg">
+      <p class="font-serif text-bone text-2xl sm:text-3xl">双碳创业者　|　零世界筑梦人</p>
+      <dl class="space-y-3 leading-loose">
+        <div><span class="text-bone/45 mr-3">主业</span><span class="text-bone/90">为人类保护地球 🌍（新能源 ⚡️，碳汇 ♻️）</span></div>
+        <div><span class="text-bone/45 mr-3">副业</span><span class="text-bone/90">在零世界里搭个台子（带 <span class="text-gold">@AI盖帮</span> 一起）🏠</span></div>
+        <div><span class="text-bone/45 mr-3">梦想</span><span class="text-bone/90">AI 慈善家 🤖</span></div>
+        <div><span class="text-bone/45 mr-3">大愿</span><span class="text-bone/90">让算力服务于脑力，带大家一起移民去零世界，让每一个孤独的灵魂都能找到同类。</span></div>
+        <div><span class="text-bone/45 mr-3">心法</span><span class="text-bone/90">修身，齐家，助人，护道，随心所欲。</span></div>
+      </dl>
+    </article>
+
+    <article data-lang="en" class="space-y-5 text-base sm:text-lg">
+      <p class="font-serif text-bone text-2xl sm:text-3xl">Carbon-neutral founder | Dreamer of 0 World</p>
+      <dl class="space-y-3 leading-loose">
+        <div><span class="text-bone/45 mr-3">Main</span><span class="text-bone/90">protecting the planet for humanity 🌍 (renewable energy ⚡️, carbon ♻️)</span></div>
+        <div><span class="text-bone/45 mr-3">Side</span><span class="text-bone/90">building a small stage inside 0 World (with <span class="text-gold">@AI盖帮</span>) 🏠</span></div>
+        <div><span class="text-bone/45 mr-3">Dream</span><span class="text-bone/90">AI philanthropist 🤖</span></div>
+        <div><span class="text-bone/45 mr-3">Vow</span><span class="text-bone/90">let compute serve the mind; bring everyone with me into 0 World; let every lonely soul find its kind.</span></div>
+        <div><span class="text-bone/45 mr-3">Practice</span><span class="text-bone/90">cultivate self, order home, help others, guard the way, move as the heart wills.</span></div>
+      </dl>
+    </article>
+
+    <hr class="rule my-16" />
+
+    <!-- Moments note -->
+    <div data-lang="zh">
+      <h3 class="font-serif text-bone text-2xl sm:text-3xl mb-10">朋友圈手记 · 账号开张前夜</h3>
+      <ol class="space-y-8 text-base sm:text-lg leading-loose text-bone/85 list-none counter-reset:item">
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">01</span><p>我的主营业务从未改变，这 6 年来一直坚持高度聚焦深耕新能源和碳交易市场实体业务。未来新能源和碳市场的业务会更加聚焦到 AI + 产业结合上面。</p></li>
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">02</span><p>我从 2026 年 3 月底开始接触 AI，只上了一天课，学习安装了 Kimi + 小龙虾。4 月 1 日起的三天内，就用 DeepSeek V2 做了三个新能源、碳汇、电力交易方向的可商业化 AI 产品，烧了 4 个多亿 tokens。从小到大我除了玩游戏，对计算机一窍不通。</p></li>
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">03</span><p>我的小团队现在 10 个人。两个月前每个人最多只会用豆包提问。现在他们每个人都在 vibe coding，手搓出了对应岗位的 AI 工具，也都用不同的大模型做出了生活、健康、娱乐方向的可商业化 AI 产品。</p></li>
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">04</span><p>我上个月还不会魔方复原，是用我和弟弟半天内用 AI 做的魔方学习软件学会的。现在已经请了全国顶尖专业魔方老师，带着小团队一起冲击全国比赛，顺便把魔方辅导学习的 web 打磨得更好。</p></li>
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">05</span><p>头像是我自己用 AI 做的，我自己称之为"觉醒肖像"。</p></li>
+      </ol>
+      <p class="mt-14 text-center text-sm text-bone/45 tracking-wider3">见者好运 🍀</p>
+    </div>
+
+    <div data-lang="en">
+      <h3 class="font-serif text-bone text-2xl sm:text-3xl mb-10">A note · the night before the account opened</h3>
+      <ol class="space-y-8 text-base sm:text-lg leading-loose text-bone/85">
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">01</span><p>My main business has never changed. For six years I've stayed deeply focused on the real-economy side of renewable energy and carbon trading. Going forward, that work will lean further into the intersection of AI and industry.</p></li>
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">02</span><p>I first touched AI in late March 2026. I took exactly one class, learned to install Kimi and Xiaolongxia. In the three days starting April 1, I built three commercially viable AI products on DeepSeek V2 — for renewable energy, carbon sinks, and electricity trading — burning more than 400 million tokens. Apart from gaming, I'd had zero clue about computers my whole life.</p></li>
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">03</span><p>My small team is ten people. Two months ago, the most any of them could do with AI was type a question into Doubao. Now every one of them is vibe coding, hand-building AI tools for their own role, and shipping commercially viable AI products in living, health, and entertainment — across different foundation models.</p></li>
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">04</span><p>Last month I still couldn't solve a Rubik's cube. I learned it through a cube-tutoring app my brother and I built with AI in half a day. We've since brought in one of the country's top cube coaches to train the team for the national competition — and we keep polishing the cube-learning web app along the way.</p></li>
+        <li class="flex gap-5"><span class="font-mono text-gold/80 text-sm pt-1 shrink-0">05</span><p>The avatar is something I made myself with AI. I call it the "awakening portrait."</p></li>
+      </ol>
+      <p class="mt-14 text-center text-sm text-bone/45 tracking-wider3">Good fortune to those who see this 🍀</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== #builder =================== -->
+<section id="view-builder" class="view">
+  <div class="mono-page max-w-3xl mx-auto py-20 sm:py-28 text-bone/85">
+    <div class="text-center">
+      <div class="text-[11px] text-bone/55 tracking-extra mb-10">B U I L D E R</div>
+      <h2 class="serif-keep text-bone text-7xl sm:text-8xl leading-none">R.W</h2>
+      <div class="mt-8 space-y-1 text-sm sm:text-base text-bone/70">
+        <p>16. building things.</p>
+        <p>
+          <a class="ext underline-offset-4 hover:underline" href="https://rbwmeta.com" target="_blank" rel="noreferrer noopener">rbwmeta.com</a>
+          <span class="text-bone/40"> · </span>
+          <span>openclaw</span>
+        </p>
+      </div>
+    </div>
+
+    <hr class="rule my-16" />
+
+    <div class="text-center">
+      <h3 class="serif-keep text-bone text-3xl sm:text-4xl leading-snug">
+        Where East and West sit at the same table.
+      </h3>
+      <p class="mt-6 text-sm sm:text-base text-bone/70 max-w-xl mx-auto leading-relaxed">
+        A small studio for the classical reading traditions — approached with scholarly rigor and human warmth.
+      </p>
+    </div>
+
+    <hr class="rule my-16" />
+
+    <!-- Founders -->
+    <div class="space-y-16 text-sm sm:text-[15px] leading-loose">
+      <div>
+        <div class="text-[11px] text-bone/50 tracking-wider3 mb-2">CO-FOUNDER</div>
+        <div class="serif-keep text-bone text-3xl mb-6">R.W</div>
+        <p class="mb-4">R.W is the younger brother of B.W, currently studying in the United States.</p>
+        <p class="mb-4">Drawing on his prior experience building with AI, he designed and built RBW alongside his sister, with a single shared goal: to bring the traditional Chinese casting arts — Xiao Liu Ren, Ziwei Doushu, and the lineages around them — to a wider audience without diluting them.</p>
+        <p class="mb-4">He handles the technology and the look of the studio's online presence.</p>
+        <p>Living and studying in the West, he is the half of RBW that meets these traditions from the other side — translating, framing, and building so they reach an audience that grew up in a different language and a different century.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <div>
+        <div class="text-[11px] text-bone/50 tracking-wider3 mb-2">CO-FOUNDER</div>
+        <div class="serif-keep text-bone text-3xl mb-6">B.W</div>
+        <p class="mb-4">B.W is the older sister of R.W, with whom she co-founded RBW.</p>
+        <p class="mb-4">She spent eight years abroad before returning to build her career in renewable energy and the carbon markets, and she brings that same long-horizon, systems-minded approach to the studio — patient, structured, and concerned with what actually lasts.</p>
+        <p class="mb-4">Outside her career, the traditional Chinese readings have always been the quiet through-line of her life — a subject she has read about, asked questions about, and returned to since she was young.</p>
+        <p>Within RBW, she is the half that holds the Chinese end of the table: the texts, the lineages, and the language these arts were first written in.</p>
+      </div>
+
+      <hr class="rule" />
+
+      <p class="text-center serif-keep text-bone/90 text-xl sm:text-2xl italic">
+        Together, the two of them are how East and West actually sit at the same table.
+      </p>
+    </div>
+
+    <div class="mt-20 text-center text-xs text-bone/45 tracking-wider3">
+      <a href="#daoist" class="nav-link">← daoist</a>
+      <span class="mx-3 text-bone/30">·</span>
+      <a href="#zero" class="nav-link">0 world</a>
+    </div>
+
+    <p id="builderZhNote" class="mt-10 text-center text-[11px] text-bone/40 tracking-wider3 lang-hide">
+      （盖人页保持英文。盖，是盖房子的盖。）
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 mt-16">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 text-center text-[11px] sm:text-xs text-bone/45 tracking-wider4">
+    <span data-lang="zh">以物换物　·　以心传心</span>
+    <span data-lang="en">thing for thing · heart for heart</span>
+  </div>
+</footer>
+
+<script>
+  // ---------- language ----------
+  const LANG_KEY = 'zeroworld.lang';
+  function getLang() {
+    return localStorage.getItem(LANG_KEY) || 'zh';
+  }
+  function applyLang(lang) {
+    document.documentElement.lang = (lang === 'en') ? 'en' : 'zh-CN';
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      if (el.dataset.lang === lang) el.classList.remove('lang-hide');
+      else el.classList.add('lang-hide');
+    });
+    // builder page is always English-first regardless of global lang.
+    // But show the small Chinese note at the bottom only when global lang is zh.
+    const note = document.getElementById('builderZhNote');
+    if (note) {
+      if (lang === 'zh') note.classList.remove('lang-hide');
+      else note.classList.add('lang-hide');
+    }
+    // lang button label: shows the OTHER language
+    const label = document.getElementById('langLabel');
+    if (label) label.textContent = (lang === 'zh') ? 'EN' : '中';
+    localStorage.setItem(LANG_KEY, lang);
+  }
+
+  document.getElementById('langBtn').addEventListener('click', () => {
+    const next = (getLang() === 'zh') ? 'en' : 'zh';
+    applyLang(next);
+  });
+
+  // ---------- routing ----------
+  const TABS = ['zero', 'log', 'code', 'daoist', 'builder'];
+  function showTab(tab) {
+    if (!TABS.includes(tab)) tab = 'zero';
+    TABS.forEach(t => {
+      const view = document.getElementById('view-' + t);
+      if (!view) return;
+      if (t === tab) view.classList.add('active');
+      else view.classList.remove('active');
+    });
+    document.querySelectorAll('.nav-link[data-tab]').forEach(a => {
+      if (a.dataset.tab === tab) a.classList.add('active');
+      else a.classList.remove('active');
+    });
+    if (location.hash !== '#' + tab) {
+      history.replaceState(null, '', '#' + tab);
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
+
+  function tabFromHash() {
+    const h = (location.hash || '').replace('#', '').toLowerCase();
+    return TABS.includes(h) ? h : 'zero';
+  }
+
+  window.addEventListener('hashchange', () => showTab(tabFromHash()));
+
+  // ---------- boot ----------
+  applyLang(getLang());
+  showTab(tabFromHash());
+</script>
+
+</body>
+</html>
