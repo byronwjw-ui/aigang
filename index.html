@@ -324,6 +324,10 @@
   }
   .mono-page p { margin: 0 0 14px; }
   .mono-page .serif-keep { font-family: var(--serif); }
+  /* zh runs inside builder fall back to serif/hei naturally */
+  .mono-page .zh-block { font-family: var(--serif); font-size: 17px; line-height: 2; color: var(--bone-90); }
+  .mono-page .zh-block p { margin: 0 0 18px; }
+
   .builder-title {
     font-family: var(--serif);
     color: var(--bone);
@@ -334,6 +338,13 @@
   .builder-sub { margin-top: 30px; color: var(--bone-70); }
   .builder-sub p { margin: 0 0 4px; }
   .builder-sub a:hover { color: var(--gold); }
+  .builder-sibline {
+    margin-top: 14px;
+    color: var(--bone-55);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+  }
   .builder-tagline {
     font-family: var(--serif);
     color: var(--bone);
@@ -347,6 +358,12 @@
     margin: 24px auto 0;
     font-size: 15px;
     line-height: 1.7;
+  }
+  .builder-intro.zh {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--bone-85);
   }
   .founder-label {
     font-size: 11px;
@@ -375,14 +392,6 @@
     letter-spacing: 0.15em;
   }
   .builder-foot .sep { margin: 0 12px; color: rgba(245,241,232,0.30); }
-  .builder-zh-note {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 11px;
-    color: var(--bone-40);
-    letter-spacing: 0.15em;
-    font-family: var(--hei);
-  }
 
   /* ============ footer ============ */
   footer.bottom {
@@ -431,7 +440,7 @@
       <a class="nav-link" data-tab="log" href="#log"><span data-lang="zh">日志</span><span data-lang="en">log</span></a>
       <a class="nav-link" data-tab="code" href="#code"><span data-lang="zh">帮规</span><span data-lang="en">code</span></a>
       <a class="nav-link" data-tab="daoist" href="#daoist"><span data-lang="zh">护道人</span><span data-lang="en">daoist</span></a>
-      <a class="nav-link" data-tab="builder" href="#builder">builder</a>
+      <a class="nav-link" data-tab="builder" href="#builder"><span data-lang="zh">盖人</span><span data-lang="en">builder</span></a>
       <button id="langBtn"><span id="langLabel">EN</span></button>
     </div>
   </div>
@@ -472,7 +481,7 @@
       <a href="#log" class="nav-link">→ <span data-lang="zh">盖帮日志</span><span data-lang="en">gaibang log</span></a>
       <a href="#code" class="nav-link">→ <span data-lang="zh">帮规</span><span data-lang="en">the code</span></a>
       <a href="#daoist" class="nav-link">→ <span data-lang="zh">护道人</span><span data-lang="en">the daoist</span></a>
-      <a href="#builder" class="nav-link">→ <span data-lang="zh">盖人 / EN</span><span data-lang="en">builder / EN</span></a>
+      <a href="#builder" class="nav-link">→ <span data-lang="zh">盖人</span><span data-lang="en">builder</span></a>
     </div>
   </div>
 </section>
@@ -650,58 +659,98 @@
 <section id="view-builder" class="view">
   <div class="col-3xl py-lg mono-page">
     <div class="center">
-      <div class="kicker" style="margin-bottom: 40px;">B U I L D E R</div>
+      <div class="kicker" style="margin-bottom: 40px;">
+        <span data-lang="zh">盖 · 人</span>
+        <span data-lang="en">B U I L D E R</span>
+      </div>
       <h2 class="builder-title serif-keep">R.W</h2>
       <div class="builder-sub">
-        <p>16. building things.</p>
+        <p>
+          <span data-lang="zh">16 岁 · 在搭东西。</span>
+          <span data-lang="en">16. building things.</span>
+        </p>
         <p>
           <a href="https://rbwmeta.com" target="_blank" rel="noreferrer noopener" style="border-bottom:1px solid rgba(245,241,232,0.15)">rbwmeta.com</a>
           <span style="color: var(--bone-40)"> · </span>
           <span>openclaw</span>
         </p>
       </div>
+      <div class="builder-sibline">
+        <span data-lang="zh">他 16 · 我 30 · 一起在建</span>
+        <span data-lang="en">he's 16 · she's 30 · building together</span>
+      </div>
     </div>
 
     <hr class="rule" style="margin: 64px 0;" />
 
     <div class="center">
-      <h3 class="builder-tagline serif-keep">Where East and West sit at the same table.</h3>
-      <p class="builder-intro">A small studio for the classical reading traditions — approached with scholarly rigor and human warmth.</p>
+      <h3 class="builder-tagline serif-keep">
+        <span data-lang="zh">东与西，同坐一张桌。</span>
+        <span data-lang="en">Where East and West sit at the same table.</span>
+      </h3>
+      <p class="builder-intro" data-lang="en">A small studio for the classical reading traditions — approached with scholarly rigor and human warmth.</p>
+      <p class="builder-intro zh" data-lang="zh">一间小小的工作室，做中国古典的术数与读心之学 —— 用学者的严谨，也带着人间的温度。</p>
     </div>
 
     <hr class="rule" style="margin: 64px 0;" />
 
-    <div>
+    <!-- EN founders -->
+    <div data-lang="en">
       <div class="founder-label">CO-FOUNDER</div>
       <div class="founder-name serif-keep">R.W</div>
       <p>R.W is the younger brother of B.W, currently studying in the United States.</p>
       <p>Drawing on his prior experience building with AI, he designed and built RBW alongside his sister, with a single shared goal: to bring the traditional Chinese casting arts — Xiao Liu Ren, Ziwei Doushu, and the lineages around them — to a wider audience without diluting them.</p>
       <p>He handles the technology and the look of the studio's online presence.</p>
       <p>Living and studying in the West, he is the half of RBW that meets these traditions from the other side — translating, framing, and building so they reach an audience that grew up in a different language and a different century.</p>
-    </div>
 
-    <hr class="rule" style="margin: 56px 0;" />
+      <hr class="rule" style="margin: 56px 0;" />
 
-    <div>
       <div class="founder-label">CO-FOUNDER</div>
       <div class="founder-name serif-keep">B.W</div>
       <p>B.W is the older sister of R.W, with whom she co-founded RBW.</p>
       <p>She spent eight years abroad before returning to build her career in renewable energy and the carbon markets, and she brings that same long-horizon, systems-minded approach to the studio — patient, structured, and concerned with what actually lasts.</p>
       <p>Outside her career, the traditional Chinese readings have always been the quiet through-line of her life — a subject she has read about, asked questions about, and returned to since she was young.</p>
       <p>Within RBW, she is the half that holds the Chinese end of the table: the texts, the lineages, and the language these arts were first written in.</p>
+
+      <hr class="rule" style="margin: 56px 0;" />
+
+      <p class="builder-together">Together, the two of them are how East and West actually sit at the same table.</p>
     </div>
 
-    <hr class="rule" style="margin: 56px 0;" />
+    <!-- ZH founders -->
+    <div data-lang="zh" class="zh-block">
+      <div class="founder-label">联合创始人</div>
+      <div class="founder-name serif-keep">R.W</div>
+      <p>R.W 是 B.W 的弟弟，现就读于美国。</p>
+      <p>他凭着此前用 AI 搭建产品的经验，和姐姐一同设计、建造了 RBW。他们只有一个共同的目标：把中国古典的术数之学 —— 小六壬、紫微斗数，以及它们所承的脉络 —— 介绍给更宽的人群，又不让它们在路上被稀释。</p>
+      <p>他负责工作室在网上的技术与样貌。</p>
+      <p>身在西方读书生活，他是 RBW 中从另一侧走近这些传统的那一半 —— 翻译、构建、呈现，让它们抵达那些在另一种语言、另一个世纪里长大的人。</p>
 
-    <p class="builder-together">Together, the two of them are how East and West actually sit at the same table.</p>
+      <hr class="rule" style="margin: 56px 0;" />
+
+      <div class="founder-label">联合创始人</div>
+      <div class="founder-name serif-keep">B.W</div>
+      <p>B.W 是 R.W 的姐姐，与他一同创立了 RBW。</p>
+      <p>她在海外生活了八年，回国后扎进新能源与碳市场，做事的方式也带回了那一份长周期、系统化的取向 —— 耐心、有结构，只关心真正能留下来的东西。</p>
+      <p>事业之外，中国古典的读心之学一直是她生命里安静的那条线 —— 一个她从小读、从小问、从小返回的题目。</p>
+      <p>在 RBW 里，她是守住桌子中文那一头的人：文本、传承，以及这些学问最初被写下时所用的语言。</p>
+
+      <hr class="rule" style="margin: 56px 0;" />
+
+      <p class="builder-together">两个人在一起，才是"东与西，同坐一张桌"真正的样子。</p>
+    </div>
 
     <div class="builder-foot">
-      <a href="#daoist" class="nav-link">← daoist</a>
+      <a href="#daoist" class="nav-link">
+        <span data-lang="zh">← 护道人</span>
+        <span data-lang="en">← daoist</span>
+      </a>
       <span class="sep">·</span>
-      <a href="#zero" class="nav-link">0 world</a>
+      <a href="#zero" class="nav-link">
+        <span data-lang="zh">零世界</span>
+        <span data-lang="en">0 world</span>
+      </a>
     </div>
-
-    <p id="builderZhNote" class="builder-zh-note lang-hide">（盖人页保持英文。盖，是盖房子的盖。）</p>
   </div>
 </section>
 
@@ -735,11 +784,6 @@
       var el = nodes[i];
       if (el.getAttribute('data-lang') === lang) el.classList.remove('lang-hide');
       else el.classList.add('lang-hide');
-    }
-    var note = document.getElementById('builderZhNote');
-    if (note) {
-      if (lang === 'zh') note.classList.remove('lang-hide');
-      else note.classList.add('lang-hide');
     }
     var label = document.getElementById('langLabel');
     if (label) label.textContent = (lang === 'zh') ? 'EN' : '中';
