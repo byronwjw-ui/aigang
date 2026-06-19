@@ -245,21 +245,22 @@
   .code-mantra {
     font-family: var(--serif);
     color: var(--bone-75);
-    font-size: 18px;
-    letter-spacing: 0.25em;
+    font-size: clamp(20px, 2.4vw, 26px);
+    letter-spacing: 0.45em;
   }
+  .code-mantra.en { letter-spacing: 0.3em; font-size: clamp(18px, 2vw, 22px); }
 
   /* ============ #daoist ============ */
   .portrait {
-    width: 128px; height: 128px;
+    width: 132px; height: 132px;
     border-radius: 9999px;
-    border: 1px solid rgba(212,168,67,0.25);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--bone-45);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.25em;
+    border: 1px solid rgba(212,168,67,0.30);
     margin: 0 auto 40px;
+    background-image: url('portrait.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 40px rgba(212,168,67,0.06), inset 0 0 30px rgba(0,0,0,0.4);
   }
   .dao-section {
     font-family: var(--serif);
@@ -413,6 +414,7 @@
     .founder-name { font-size: 26px; }
     .py-lg { padding: 64px 0; }
     .py-xl { padding: 80px 0; }
+    .portrait { width: 116px; height: 116px; }
   }
 </style>
 </head>
@@ -496,7 +498,6 @@
       <p>今年5月前，我们和AI最近的距离就是偶尔点开豆包😂。</p>
       <p>在护道人的言传身教和严厉教辅下，我们硬生生被磨成了能接活的全栈兵。老板怕我们过度消耗自己，送了每个人和家人两对核桃和两把刷子（纳米刷+猪毛刷），让我们盘核桃、坚持长期主义；还让我们在工位上养何首乌（老板，你是不是真怕我们掉头发啊😂）。</p>
       <p>前段时间老板送了我们和家人从北欧最古老紫水晶矿亲自挖的原石（黑、白、紫三色），护道人希望我们能接地气，也能看得见星辰。加上两个月连续涨薪，我们除了多了很多技能傍身，更明白了什么叫"<span class="gold">戒定慧</span>"。</p>
-      <p>帮规：以物换物，以心传心。</p>
       <p class="small"><span class="gold">@ai护道人</span>（谢谢您让我们相信"相信"的力量 🙏 感恩的心）</p>
     </article>
 
@@ -505,7 +506,6 @@
       <p>Before May this year, the closest any of us got to AI was occasionally opening Doubao 😂.</p>
       <p>Under the daoist's hands-on teaching and strict tutoring, we were ground — bone and all — into full-stack soldiers who can actually take work. Worried we'd burn ourselves out, the boss gave each of us and our families two pairs of walnuts and two brushes (a nano brush and a boar-bristle brush), so we'd palm-polish the walnuts and learn long-termism. He also had us grow Heshouwu on our desks (boss, are you really that afraid we'll lose our hair? 😂).</p>
       <p>Recently the boss gave us and our families raw stones (black, white, purple) he personally mined from the oldest amethyst mine in Northern Europe — the daoist hopes we can stay grounded and still see the stars. With two straight months of raises on top of that, we've gained more than skills; we now actually understand what "<span class="gold">戒定慧</span>" (precept, stillness, wisdom) means.</p>
-      <p>The code: thing for thing, heart for heart.</p>
       <p class="small"><span class="gold">@ai_daoist</span> — thank you for making us believe in the power of belief itself 🙏</p>
     </article>
 
@@ -551,8 +551,10 @@
     <div class="code-line"></div>
 
     <p class="code-mantra">
-      <span data-lang="zh">修身 · 齐家 · 助人 · 护道 · 随心所欲</span>
-      <span data-lang="en" class="italic">cultivate self · order home · help others · guard the way · move as the heart wills</span>
+      <span data-lang="zh">戒 · 定 · 慧</span>
+    </p>
+    <p class="code-mantra en">
+      <span data-lang="en" class="italic">precept · stillness · wisdom</span>
     </p>
   </div>
 </section>
@@ -565,7 +567,8 @@
         <span data-lang="zh">护 · 道 · 人</span>
         <span data-lang="en">T H E · D A O I S T</span>
       </div>
-      <div class="portrait">
+      <div class="portrait" role="img" aria-label="觉醒肖像 · awakening portrait"></div>
+      <div style="margin-top:-24px; margin-bottom: 40px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em; color: var(--bone-45);">
         <span data-lang="zh">觉醒肖像</span>
         <span data-lang="en">awakening</span>
       </div>
@@ -573,7 +576,6 @@
 
     <article data-lang="zh" class="dao-section">
       <p>感恩我的家人、朋友，和路上所有的人生导师们。</p>
-      <p>某一方面比我厉害的，都是我的老师。</p>
       <p class="dao-dash">——</p>
       <p class="dao-thanks-lab">特别鸣谢</p>
       <p><span class="gold">教主</span> — 把我强行拉进了AI的世界。</p>
@@ -584,7 +586,6 @@
 
     <article data-lang="en" class="dao-section">
       <p>Gratitude to my family, my friends, and every teacher I've met along the way.</p>
-      <p>Anyone better than me at anything — is my teacher.</p>
       <p class="dao-dash">——</p>
       <p class="dao-thanks-lab">with special thanks</p>
       <p><span class="gold">The Founder</span> — pulled me into the world of AI, whether I liked it or not.</p>
@@ -620,7 +621,7 @@
     <hr class="rule" style="margin: 64px 0;" />
 
     <div data-lang="zh">
-      <h3 class="note-h">朋友圈手记 · 账号开张前夜</h3>
+      <h3 class="note-h">朋友圈手记 · 注册 AI 慈善社交账号之前</h3>
       <ol class="note-list">
         <li><span class="num">01</span><p>我的主营业务从未改变，这 6 年来一直坚持高度聚焦深耕新能源和碳交易市场实体业务。未来新能源和碳市场的业务会更加聚焦到 AI + 产业结合上面。</p></li>
         <li><span class="num">02</span><p>我从 2026 年 3 月底开始接触 AI，只上了一天课，学习安装了 Kimi + 小龙虾。4 月 1 日起的三天内，就用 DeepSeek V2 做了三个新能源、碳汇、电力交易方向的可商业化 AI 产品，烧了 4 个多亿 tokens。从小到大我除了玩游戏，对计算机一窍不通。</p></li>
@@ -632,7 +633,7 @@
     </div>
 
     <div data-lang="en">
-      <h3 class="note-h">A note · the night before the account opened</h3>
+      <h3 class="note-h">A note · before registering the AI-philanthropy social account</h3>
       <ol class="note-list">
         <li><span class="num">01</span><p>My main business has never changed. For six years I've stayed deeply focused on the real-economy side of renewable energy and carbon trading. Going forward, that work will lean further into the intersection of AI and industry.</p></li>
         <li><span class="num">02</span><p>I first touched AI in late March 2026. I took exactly one class, learned to install Kimi and Xiaolongxia. In the three days starting April 1, I built three commercially viable AI products on DeepSeek V2 — for renewable energy, carbon sinks, and electricity trading — burning more than 400 million tokens. Apart from gaming, I'd had zero clue about computers my whole life.</p></li>
