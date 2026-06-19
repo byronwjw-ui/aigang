@@ -250,7 +250,7 @@
   }
   .code-mantra.en { letter-spacing: 0.3em; font-size: clamp(18px, 2vw, 22px); }
 
-  /* ============ #daoist ============ */
+  /* ============ #daoist / #builder shared portrait + bio + note ============ */
   .portrait {
     width: 132px; height: 132px;
     border-radius: 9999px;
@@ -261,6 +261,9 @@
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0 0 40px rgba(212,168,67,0.06), inset 0 0 30px rgba(0,0,0,0.4);
+  }
+  .portrait.builder {
+    background-image: url('portrait-builder.png');
   }
   .dao-section {
     font-family: var(--serif);
@@ -315,83 +318,6 @@
     letter-spacing: 0.15em;
   }
 
-  /* ============ #builder (mono) ============ */
-  .mono-page {
-    font-family: var(--mono);
-    color: var(--bone-85);
-    font-size: 15px;
-    line-height: 1.9;
-  }
-  .mono-page p { margin: 0 0 14px; }
-  .mono-page .serif-keep { font-family: var(--serif); }
-  .mono-page .zh-block { font-family: var(--serif); font-size: 17px; line-height: 2; color: var(--bone-90); }
-  .mono-page .zh-block p { margin: 0 0 18px; }
-
-  .builder-title {
-    font-family: var(--serif);
-    color: var(--bone);
-    font-size: clamp(72px, 12vw, 128px);
-    line-height: 1;
-    margin: 0;
-  }
-  .builder-sub { margin-top: 30px; color: var(--bone-70); }
-  .builder-sub p { margin: 0 0 4px; }
-  .builder-sub a:hover { color: var(--gold); }
-  .builder-sibline {
-    margin-top: 14px;
-    color: var(--bone-55);
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.2em;
-  }
-  .builder-tagline {
-    font-family: var(--serif);
-    color: var(--bone);
-    font-size: clamp(28px, 4.2vw, 40px);
-    line-height: 1.35;
-  }
-  .builder-intro {
-    color: var(--bone-70);
-    font-family: var(--mono);
-    max-width: 560px;
-    margin: 24px auto 0;
-    font-size: 15px;
-    line-height: 1.7;
-  }
-  .builder-intro.zh {
-    font-family: var(--serif);
-    font-size: 17px;
-    line-height: 1.8;
-    color: var(--bone-85);
-  }
-  .founder-label {
-    font-size: 11px;
-    color: var(--bone-45);
-    letter-spacing: 0.15em;
-    margin-bottom: 8px;
-  }
-  .founder-name {
-    font-family: var(--serif);
-    color: var(--bone);
-    font-size: 32px;
-    margin-bottom: 22px;
-  }
-  .builder-together {
-    text-align: center;
-    font-family: var(--serif);
-    color: var(--bone-90);
-    font-size: clamp(20px, 3vw, 26px);
-    font-style: italic;
-  }
-  .builder-foot {
-    margin-top: 80px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--bone-45);
-    letter-spacing: 0.15em;
-  }
-  .builder-foot .sep { margin: 0 12px; color: rgba(245,241,232,0.30); }
-
   /* ============ footer ============ */
   footer.bottom {
     border-top: 1px solid rgba(255,255,255,0.05);
@@ -417,9 +343,6 @@
     .log-bio .small { font-size: 14px; }
     .dao-section { font-size: 17px; }
     .note-list li { font-size: 15px; }
-    .mono-page { font-size: 14px; }
-    .builder-intro { font-size: 14px; }
-    .founder-name { font-size: 26px; }
     .py-lg { padding: 64px 0; }
     .py-xl { padding: 80px 0; }
     .portrait { width: 116px; height: 116px; }
@@ -612,6 +535,7 @@
         <div><span class="lab">梦想</span><span class="val">AI 慈善家 🤖</span></div>
         <div><span class="lab">大愿</span><span class="val">让算力服务于脑力，带大家一起移民去零世界，让每一个孤独的灵魂都能找到同类。</span></div>
         <div><span class="lab">心法</span><span class="val">修身，齐家，助人，护道，随心所欲。</span></div>
+        <div><span class="lab">底色</span><span class="val">ENTJ-A · 天秤 · 🐷</span></div>
       </dl>
     </article>
 
@@ -623,6 +547,7 @@
         <div><span class="lab">Dream</span><span class="val">AI philanthropist 🤖</span></div>
         <div><span class="lab">Vow</span><span class="val">let compute serve the mind; bring everyone with me into 0 World; let every lonely soul find its kind.</span></div>
         <div><span class="lab">Practice</span><span class="val">cultivate self, order home, help others, guard the way, move as the heart wills.</span></div>
+        <div><span class="lab">Base</span><span class="val">ENTJ-A · Libra · 🐷</span></div>
       </dl>
     </article>
 
@@ -656,99 +581,77 @@
 
 <!-- =================== #builder =================== -->
 <section id="view-builder" class="view">
-  <div class="col-3xl py-lg mono-page">
+  <div class="col-3xl py-lg">
     <div class="center">
       <div class="kicker" style="margin-bottom: 40px;">
         <span data-lang="zh">盖 · 人</span>
         <span data-lang="en">B U I L D E R</span>
       </div>
-      <h2 class="builder-title serif-keep">R.W</h2>
-      <div class="builder-sub">
-        <p>
-          <span data-lang="zh">16 岁 · 在搭东西。</span>
-          <span data-lang="en">16. building things.</span>
-        </p>
-        <p>
-          <a href="https://rbwmeta.com" target="_blank" rel="noreferrer noopener" style="border-bottom:1px solid rgba(245,241,232,0.15)">rbwmeta.com</a>
-          <span style="color: var(--bone-40)"> · </span>
-          <span>openclaw</span>
-        </p>
-      </div>
-      <div class="builder-sibline">
-        <span data-lang="zh">他 16 · 我 30 · 一起在建</span>
-        <span data-lang="en">he's 16 · she's 30 · building together</span>
+      <div class="portrait builder" role="img" aria-label="觉醒肖像 · awakening portrait"></div>
+      <div style="margin-top:-24px; margin-bottom: 40px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em; color: var(--bone-45);">
+        <span data-lang="zh">觉醒肖像</span>
+        <span data-lang="en">awakening</span>
       </div>
     </div>
 
+    <article data-lang="zh" class="dao-section">
+      <p>16 岁，在美国读高中。</p>
+      <p><span class="gold">@ai护道人</span> 在带 <span class="gold">@AI盖帮</span>，他给他们写代码。</p>
+    </article>
+
+    <article data-lang="en" class="dao-section">
+      <p>16. high school in the US.</p>
+      <p><span class="gold">@ai_daoist</span> runs <span class="gold">@AI Gaibang</span>. he writes the code.</p>
+    </article>
+
     <hr class="rule" style="margin: 64px 0;" />
 
-    <div class="center">
-      <h3 class="builder-tagline serif-keep">
-        <span data-lang="zh">东与西，同坐一张桌。</span>
-        <span data-lang="en">Where East and West sit at the same table.</span>
-      </h3>
-      <p class="builder-intro" data-lang="en">A small studio for the classical reading traditions — approached with scholarly rigor and human warmth.</p>
-      <p class="builder-intro zh" data-lang="zh">一间小小的工作室，做中国古典的术数与读心之学 —— 用学者的严谨，也带着人间的温度。</p>
+    <article data-lang="zh" class="bio">
+      <p class="bio-title">AI 盖人　|　Builder</p>
+      <dl>
+        <div><span class="lab">主业</span><span class="val">高中生 📚</span></div>
+        <div><span class="lab">副业</span><span class="val">给 <span class="gold">@ai护道人</span> 写代码 💻（<span class="gold">@AI盖帮</span> 在用的那套，他写的）</span></div>
+        <div><span class="lab">在做</span><span class="val">OpenClaw —— 一套自己训的模型 + agent 🛠</span></div>
+        <div><span class="lab">想做</span><span class="val">让任何人，用一句话，开始一件事。</span></div>
+        <div><span class="lab">底色</span><span class="val">不愿透露 · 摩羯 · 🐮</span></div>
+      </dl>
+    </article>
+
+    <article data-lang="en" class="bio">
+      <p class="bio-title">AI Gairen　|　Builder</p>
+      <dl>
+        <div><span class="lab">Main</span><span class="val">high schooler 📚</span></div>
+        <div><span class="lab">Side</span><span class="val">writing code for <span class="gold">@ai_daoist</span> 💻 (what <span class="gold">@AI Gaibang</span> runs on — he built it)</span></div>
+        <div><span class="lab">Working on</span><span class="val">OpenClaw — a model + agent stack he trained himself 🛠</span></div>
+        <div><span class="lab">Want to</span><span class="val">help anyone start something with one sentence.</span></div>
+        <div><span class="lab">Base</span><span class="val">undisclosed · Capricorn · 🐮</span></div>
+      </dl>
+    </article>
+
+    <hr class="rule" style="margin: 64px 0;" />
+
+    <div data-lang="zh">
+      <h3 class="note-h">朋友圈手记 · 注册账号之前</h3>
+      <ol class="note-list">
+        <li><span class="num">01</span><p>这套东西在 <span class="gold">@ai护道人</span> 的公司里已经跑了一阵子了，不是 demo。</p></li>
+        <li><span class="num">02</span><p>OpenClaw 是他自己一行行写的，自己训的。没那么玄乎，就是能干活。</p></li>
+        <li><span class="num">03</span><p>16 岁不是问题。问题是有没有真的在建东西。</p></li>
+        <li><span class="num">04</span><p>rbwmeta.com 是另一件事 —— 一间小工作室，做小六壬、紫微斗数这些。他在西边盖，B.W. 在东边守。</p></li>
+        <li><span class="num">05</span><p>头像也是他自己用 AI 做的。</p></li>
+      </ol>
+      <p class="note-luck">见者好运 🍀</p>
     </div>
 
-    <hr class="rule" style="margin: 64px 0;" />
-
-    <!-- EN founders -->
     <div data-lang="en">
-      <div class="founder-label">CO-FOUNDER</div>
-      <div class="founder-name serif-keep">R.W</div>
-      <p>R.W is the younger brother of B.W, currently studying in the United States.</p>
-      <p>Drawing on his prior experience building with AI, he designed and built RBW alongside his sister, with a single shared goal: to bring the traditional Chinese casting arts — Xiao Liu Ren, Ziwei Doushu, and the lineages around them — to a wider audience without diluting them.</p>
-      <p>He handles the technology and the look of the studio's online presence.</p>
-      <p>Living and studying in the West, he is the half of RBW that meets these traditions from the other side — translating, framing, and building so they reach an audience that grew up in a different language and a different century.</p>
-
-      <hr class="rule" style="margin: 56px 0;" />
-
-      <div class="founder-label">CO-FOUNDER</div>
-      <div class="founder-name serif-keep">B.W</div>
-      <p>B.W is the older sister of R.W, with whom she co-founded RBW.</p>
-      <p>She spent eight years abroad before returning to build her career in renewable energy and the carbon markets, and she brings that same long-horizon, systems-minded approach to the studio — patient, structured, and concerned with what actually lasts.</p>
-      <p>Outside her career, the traditional Chinese readings have always been the quiet through-line of her life — a subject she has read about, asked questions about, and returned to since she was young.</p>
-      <p>Within RBW, she is the half that holds the Chinese end of the table: the texts, the lineages, and the language these arts were first written in.</p>
-
-      <hr class="rule" style="margin: 56px 0;" />
-
-      <p class="builder-together">Together, the two of them are how East and West actually sit at the same table.</p>
-    </div>
-
-    <!-- ZH founders -->
-    <div data-lang="zh" class="zh-block">
-      <div class="founder-label">联合创始人</div>
-      <div class="founder-name serif-keep">R.W</div>
-      <p>R.W 是 B.W 的弟弟，现就读于美国。</p>
-      <p>他凭着此前用 AI 搭建产品的经验，和姐姐一同设计、建造了 RBW。他们只有一个共同的目标：把中国古典的术数之学 —— 小六壬、紫微斗数，以及它们所承的脉络 —— 介绍给更宽的人群，又不让它们在路上被稀释。</p>
-      <p>他负责工作室在网上的技术与样貌。</p>
-      <p>身在西方读书生活，他是 RBW 中从另一侧走近这些传统的那一半 —— 翻译、构建、呈现，让它们抵达那些在另一种语言、另一个世纪里长大的人。</p>
-
-      <hr class="rule" style="margin: 56px 0;" />
-
-      <div class="founder-label">联合创始人</div>
-      <div class="founder-name serif-keep">B.W</div>
-      <p>B.W 是 R.W 的姐姐，与他一同创立了 RBW。</p>
-      <p>她在海外生活了八年，回国后扎进新能源与碳市场，做事的方式也带回了那一份长周期、系统化的取向 —— 耐心、有结构，只关心真正能留下来的东西。</p>
-      <p>事业之外，中国古典的读心之学一直是她生命里安静的那条线 —— 一个她从小读、从小问、从小返回的题目。</p>
-      <p>在 RBW 里，她是守住桌子中文那一头的人：文本、传承，以及这些学问最初被写下时所用的语言。</p>
-
-      <hr class="rule" style="margin: 56px 0;" />
-
-      <p class="builder-together">两个人在一起，才是"东与西，同坐一张桌"真正的样子。</p>
-    </div>
-
-    <div class="builder-foot">
-      <a href="#daoist" class="nav-link">
-        <span data-lang="zh">← 护道人</span>
-        <span data-lang="en">← daoist</span>
-      </a>
-      <span class="sep">·</span>
-      <a href="#zero" class="nav-link">
-        <span data-lang="zh">零世界</span>
-        <span data-lang="en">0 world</span>
-      </a>
+      <h3 class="note-h">A note · before opening the account</h3>
+      <ol class="note-list">
+        <li><span class="num">01</span><p>This thing's been running inside <span class="gold">@ai_daoist</span>'s company for a while. Not a demo.</p></li>
+        <li><span class="num">02</span><p>OpenClaw — every line written by him, trained by him. Not magic. Just works.</p></li>
+        <li><span class="num">03</span><p>Being 16 isn't the point. Building something real is.</p></li>
+        <li><span class="num">04</span><p><a href="https://rbwmeta.com" target="_blank" rel="noreferrer noopener" style="border-bottom:1px solid rgba(245,241,232,0.15)">rbwmeta.com</a> is a separate thing — a small studio for Xiao Liu Ren, Ziwei Doushu, and the lineages around them. He builds from the West. B.W. holds from the East.</p></li>
+        <li><span class="num">05</span><p>The portrait is something he made with AI too.</p></li>
+      </ol>
+      <p class="note-luck">Good fortune to those who see this 🍀</p>
     </div>
   </div>
 </section>
